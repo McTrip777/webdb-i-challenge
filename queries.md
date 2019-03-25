@@ -22,11 +22,14 @@ select * from customers where customername like "%market%"
 insert into customers (customername, contactname, address, city, postalcode, country) values ('The Shire', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth')
 
 ## update _Bilbo Baggins_ record so that the postal code changes to _"11122"_.
-
+update customers set postalcode = '11122' where customerid = 92
 
 ## list orders grouped by customer showing the number of orders per customer. _Rattlesnake Canyon Grocery_ should have 7 orders.
+select customername, count(orders.customerid) as Quantity from orders join customers on orders.customerid = customers.customerid group by customername
 
 ## list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Ernst Handel_ should be at the top with 10 orders followed by _QUICK-Stop_, _Rattlesnake Canyon Grocery_ and _Wartian Herkku_ with 7 orders each.
+select customername, count(*) as Quantity from orders join customers on customers.customerid = orders.customerid group by orders.customerid order by Quantity desc 
+
 
 ## list orders grouped by customer's city showing number of orders per city. Returns 58 Records with _Aachen_ showing 2 orders and _Albuquerque_ showing 7 orders.
 
