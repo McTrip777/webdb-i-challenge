@@ -34,3 +34,4 @@ select customername, count(*) as Quantity from orders join customers on customer
 select city, count(*) as Quantity from orders join customers on customers.customerid = orders.customerid group by customers.city 
 
 ## delete all users that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
+delete from customers where NOT EXISTS (Select* from orders where customerID = customers.customerID )
