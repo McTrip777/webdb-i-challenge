@@ -30,7 +30,7 @@ select customername, count(orders.customerid) as Quantity from orders join custo
 ## list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Ernst Handel_ should be at the top with 10 orders followed by _QUICK-Stop_, _Rattlesnake Canyon Grocery_ and _Wartian Herkku_ with 7 orders each.
 select customername, count(*) as Quantity from orders join customers on customers.customerid = orders.customerid group by orders.customerid order by Quantity desc 
 
-
 ## list orders grouped by customer's city showing number of orders per city. Returns 58 Records with _Aachen_ showing 2 orders and _Albuquerque_ showing 7 orders.
+select city, count(*) as Quantity from orders join customers on customers.customerid = orders.customerid group by customers.city 
 
 ## delete all users that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
